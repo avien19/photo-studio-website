@@ -258,17 +258,24 @@ export default function Home() {
                 >
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 transition-all duration-300 rounded-full px-8 group shadow-[0_4px_14px_0_rgba(239,68,68,0.39)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)]"
-                    onClick={() => setActiveSection("portfolio")}
+                    className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 transition-all duration-300 rounded-full px-8 group shadow-[0_4px_14px_0_rgba(239,68,68,0.39)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)] text-white"
+                    onClick={() => {
+                      const element = document.getElementById("portfolio")
+                      element?.scrollIntoView({ behavior: "smooth" })
+                      setActiveSection("portfolio")
+                    }}
                   >
                     <span>View Our Work</span>
                     <ChevronRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                   </Button>
                   <Button
                     size="lg"
-                    variant="outline"
-                    className="text-white border-white/20 hover:bg-white/10 hover:border-red-500/50 transition-all duration-300 rounded-full px-8 backdrop-blur-sm"
-                    onClick={() => setActiveSection("contact")}
+                    className="bg-white/10 hover:bg-red-500 text-white border-2 border-white/20 hover:border-red-500 transition-all duration-300 rounded-full px-8 backdrop-blur-sm hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)]"
+                    onClick={() => {
+                      const element = document.getElementById("contact")
+                      element?.scrollIntoView({ behavior: "smooth" })
+                      setActiveSection("contact")
+                    }}
                   >
                     Book a Session
                   </Button>
@@ -278,18 +285,17 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="hidden md:block relative"
+                className="hidden md:block relative w-full max-w-2xl mx-auto"
               >
                 <div className="absolute top-0 right-0 w-64 h-64 rounded-full border border-white/10 animate-pulse"></div>
                 <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full border border-red-500/20 animate-pulse"></div>
                 <div className="relative z-10 bg-white/5 backdrop-blur-md p-4 rounded-3xl overflow-hidden border border-white/10">
-                  <div className="relative">
+                  <div className="relative aspect-[4/3]">
                     <Image
                       src="/placeholder.svg?height=600&width=600"
                       alt="Featured photography"
-                      width={600}
-                      height={600}
-                      className="rounded-2xl"
+                      fill
+                      className="rounded-2xl object-cover"
                     />
                     <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-md rounded-xl p-4 border border-white/10">
                       <h3 className="font-medium text-lg">Latest Project</h3>
@@ -495,28 +501,28 @@ export default function Home() {
               <div className="flex flex-wrap gap-2 mt-6 md:mt-0 bg-white/5 backdrop-blur-sm p-1 rounded-full">
                 <Button
                   variant="ghost"
-                  className="bg-white/10 text-white rounded-full hover:bg-red-500/20 hover:text-red-500"
+                  className="bg-white/10 text-white rounded-full hover:bg-red-500 hover:text-white transition-all duration-300"
                   onClick={() => {}}
                 >
                   All
                 </Button>
                 <Button
                   variant="ghost"
-                  className="text-white/70 hover:text-red-500 hover:bg-red-500/10 rounded-full"
+                  className="text-white hover:bg-red-500 hover:text-white rounded-full transition-all duration-300"
                   onClick={() => {}}
                 >
                   Portrait
                 </Button>
                 <Button
                   variant="ghost"
-                  className="text-white/70 hover:text-red-500 hover:bg-red-500/10 rounded-full"
+                  className="text-white hover:bg-red-500 hover:text-white rounded-full transition-all duration-300"
                   onClick={() => {}}
                 >
                   Commercial
                 </Button>
                 <Button
                   variant="ghost"
-                  className="text-white/70 hover:text-red-500 hover:bg-red-500/10 rounded-full"
+                  className="text-white hover:bg-red-500 hover:text-white rounded-full transition-all duration-300"
                   onClick={() => {}}
                 >
                   Events
@@ -626,7 +632,13 @@ export default function Home() {
               viewport={{ once: true, margin: "-100px" }}
               className="mt-12 text-center"
             >
-              <Button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 transition-all duration-300 rounded-full px-8 py-6 shadow-[0_4px_14px_0_rgba(239,68,68,0.39)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)]">
+              <Button 
+                className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 transition-all duration-300 rounded-full px-8 py-6 shadow-[0_4px_14px_0_rgba(239,68,68,0.39)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)]"
+                onClick={() => {
+                  const element = document.getElementById("portfolio")
+                  element?.scrollIntoView({ behavior: "smooth" })
+                }}
+              >
                 View Full Gallery
               </Button>
             </motion.div>
@@ -704,7 +716,10 @@ export default function Home() {
                 <div className="mt-10">
                   <Button
                     className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white transition-colors rounded-full px-8 py-6 group shadow-[0_4px_14px_0_rgba(239,68,68,0.39)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)]"
-                    onClick={() => {}}
+                    onClick={() => {
+                      const element = document.getElementById("about")
+                      element?.scrollIntoView({ behavior: "smooth" })
+                    }}
                   >
                     <span>Learn More About Us</span>
                     <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
@@ -822,8 +837,12 @@ export default function Home() {
                     ></textarea>
                   </div>
                   <Button
-                    className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white transition-colors rounded-full px-8 py-4"
-                    onClick={(e) => e.preventDefault()}
+                    className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white transition-colors rounded-full px-8 py-4 shadow-[0_4px_14px_0_rgba(239,68,68,0.39)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)]"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      // Here you would typically handle form submission
+                      console.log('Form submitted')
+                    }}
                   >
                     Send Message
                   </Button>
