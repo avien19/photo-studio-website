@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Menu, X, ChevronRight, Instagram, Twitter, Facebook } from "lucide-react"
+import { ArrowRight, Menu, X, ChevronRight, Instagram, Twitter, Facebook, MapPin, Phone, Mail } from "lucide-react"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -16,9 +16,8 @@ export default function Home() {
 
   // Custom cursor effect
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (cursorRef.current) {
-        // Add a slight delay for a trailing effect
         setTimeout(() => {
           cursorRef.current.style.left = `${e.clientX}px`
           cursorRef.current.style.top = `${e.clientY}px`
@@ -288,8 +287,8 @@ export default function Home() {
                     <Image
                       src="/placeholder.svg?height=600&width=600"
                       alt="Featured photography"
-                      width={0}
-                      height={}
+                      width={600}
+                      height={600}
                       className="rounded-2xl"
                     />
                     <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-md rounded-xl p-4 border border-white/10">
@@ -717,296 +716,169 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative py-32 bg-[#0f0f0f] text-white">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center opacity-10"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#0f0f0f] via-transparent to-[#0f0f0f]"></div>
+        <section id="contact" className="relative py-32 bg-black text-white overflow-hidden">
+          {/* Background elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-red-500/10 blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-red-500/10 blur-3xl"></div>
+          </div>
 
           <div className="container mx-auto px-6 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="max-w-4xl mx-auto"
-            >
-              <div className="text-center mb-16">
-                <div className="inline-block px-4 py-1 bg-red-500/10 backdrop-blur-sm rounded-full mb-6">
-                  <span className="text-sm uppercase tracking-[0.2em] text-red-500">Get In Touch</span>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Let's Work Together</h2>
-                <p className="mt-4 text-white/70 max-w-2xl mx-auto">
-                  Have a project in mind? We'd love to hear from you. Reach out to discuss how we can bring your vision
-                  to life.
-                </p>
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <div className="inline-block px-4 py-1 bg-red-500/10 rounded-full mb-6">
+                <span className="text-sm uppercase tracking-[0.2em] text-red-500">Get in Touch</span>
               </div>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Let's Create Something Amazing</h2>
+              <p className="text-white/70">
+                Ready to bring your vision to life? Contact us today to discuss your project and discover how we can help
+                you achieve your photography goals.
+              </p>
+            </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  className="space-y-8"
-                >
-                  <div className="flex items-start gap-6">
-                    <div className="bg-gradient-to-br from-red-500/20 to-red-500/10 backdrop-blur-sm p-4 rounded-2xl">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-6 w-6 text-red-500"
-                      >
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-lg">Phone</h4>
-                      <p className="text-white/70">+63 976 079 3197</p>
+            <div className="grid md:grid-cols-2 gap-16">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="space-y-8"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center">
+                      <MapPin className="h-6 w-6 text-red-500" />
                     </div>
                   </div>
-                  <div className="flex items-start gap-6">
-                    <div className="bg-gradient-to-br from-red-500/20 to-red-500/10 backdrop-blur-sm p-4 rounded-2xl">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-6 w-6 text-red-500"
-                      >
-                        <rect width="20" height="16" x="2" y="4" rx="2" />
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-lg">Email</h4>
-                      <p className="text-white/70">thinklabstudios@gmail.com</p>
-                    </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">Visit Our Studio</h3>
+                    <p className="text-white/70">123 Photography Lane, Creative District, City, 12345</p>
                   </div>
-                  <div className="flex items-start gap-6">
-                    <div className="bg-gradient-to-br from-red-500/20 to-red-500/10 backdrop-blur-sm p-4 rounded-2xl">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-6 w-6 text-red-500"
-                      >
-                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-lg">Location</h4>
-                      <p className="text-white/70">Lunà Building, 4F Unit 21, Gorordo Ave., Barangay Lahug</p>
-                      <p className="text-white/70">Cebu City, Philippines 6000</p>
-                    </div>
-                  </div>
+                </div>
 
-                  <div className="pt-8">
-                    <h4 className="font-medium text-lg mb-4">Follow Us</h4>
-                    <div className="flex gap-4">
-                      <a
-                        href="#"
-                        className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-red-500 transition-colors"
-                      >
-                        <Facebook className="h-5 w-5" />
-                      </a>
-                      <a
-                        href="#"
-                        className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-red-500 transition-colors"
-                      >
-                        <Instagram className="h-5 w-5" />
-                      </a>
-                      <a
-                        href="#"
-                        className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-red-500 transition-colors"
-                      >
-                        <Twitter className="h-5 w-5" />
-                      </a>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center">
+                      <Phone className="h-6 w-6 text-red-500" />
                     </div>
                   </div>
-                </motion.div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">Call Us</h3>
+                    <p className="text-white/70">(555) 123-4567</p>
+                  </div>
+                </div>
 
-                <motion.form
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  className="space-y-6"
-                >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium text-white/70">
-                        Name
-                      </label>
-                      <input
-                        id="name"
-                        className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white focus:border-red-500 transition-colors outline-none"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium text-white/70">
-                        Email
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white focus:border-red-500 transition-colors outline-none"
-                        placeholder="Your email"
-                      />
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center">
+                      <Mail className="h-6 w-6 text-red-500" />
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium text-white/70">
-                      Subject
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">Email Us</h3>
+                    <p className="text-white/70">info@thinklabstudios.com</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="bg-white/5 backdrop-blur-lg rounded-3xl p-8"
+              >
+                <form className="space-y-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-2">
+                      Name
                     </label>
                     <input
-                      id="subject"
-                      className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white focus:border-red-500 transition-colors outline-none"
-                      placeholder="Subject"
+                      type="text"
+                      id="name"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      placeholder="Your name"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-white/70">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      placeholder="Your email"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">
                       Message
                     </label>
                     <textarea
                       id="message"
                       rows={4}
-                      className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white focus:border-red-500 transition-colors outline-none"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                       placeholder="Your message"
                     ></textarea>
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 transition-all duration-300 rounded-full py-6 shadow-[0_4px_14px_0_rgba(239,68,68,0.39)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)]">
+                  <Button
+                    className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white transition-colors rounded-full px-8 py-4"
+                    onClick={(e) => e.preventDefault()}
+                  >
                     Send Message
                   </Button>
-                </motion.form>
-              </div>
-            </motion.div>
+                </form>
+              </motion.div>
+            </div>
           </div>
         </section>
 
-        <footer className="bg-[#0f0f0f] text-white py-16 relative z-10 border-t border-white/5">
+        {/* Footer */}
+        <footer className="bg-black text-white py-12 border-t border-white/10">
           <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div className="grid md:grid-cols-4 gap-12">
               <div>
-                <Link href="#" className="flex items-center gap-3 group mb-6">
-                  <div className="relative h-10 w-10 rounded-xl overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-red-700"></div>
-                    <div className="absolute inset-[3px] bg-black rounded-lg flex items-center justify-center">
-                      <span className="font-bold text-white text-xs tracking-wider">TL</span>
-                    </div>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-bold text-xl tracking-tighter">thinkLab</span>
-                    <span className="text-xs tracking-[0.2em] text-red-500 uppercase">Studios</span>
-                  </div>
-                </Link>
-                <p className="text-white/70 mb-6">
-                  Transforming moments into timeless visual stories through the art of photography.
+                <h3 className="text-xl font-bold mb-4">thinkLab Studios</h3>
+                <p className="text-white/70">
+                  Capturing moments, creating memories, and telling stories through the lens of creativity.
                 </p>
-                <div className="flex gap-4">
-                  <a href="#" className="text-white/40 hover:text-red-500 transition-colors">
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="text-white/40 hover:text-red-500 transition-colors">
-                    <Instagram className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="text-white/40 hover:text-red-500 transition-colors">
-                    <Twitter className="h-5 w-5" />
-                  </a>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul className="space-y-2 text-white/70">
+                  <li><Link href="#home" className="hover:text-red-500 transition-colors">Home</Link></li>
+                  <li><Link href="#services" className="hover:text-red-500 transition-colors">Services</Link></li>
+                  <li><Link href="#portfolio" className="hover:text-red-500 transition-colors">Portfolio</Link></li>
+                  <li><Link href="#about" className="hover:text-red-500 transition-colors">About</Link></li>
+                  <li><Link href="#contact" className="hover:text-red-500 transition-colors">Contact</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Services</h4>
+                <ul className="space-y-2 text-white/70">
+                  <li>Portrait Photography</li>
+                  <li>Commercial Photography</li>
+                  <li>Event Photography</li>
+                  <li>Wedding Photography</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
+                <div className="flex space-x-4">
+                  <Link href="#" className="text-white/70 hover:text-red-500 transition-colors">
+                    <Instagram className="h-6 w-6" />
+                  </Link>
+                  <Link href="#" className="text-white/70 hover:text-red-500 transition-colors">
+                    <Facebook className="h-6 w-6" />
+                  </Link>
+                  <Link href="#" className="text-white/70 hover:text-red-500 transition-colors">
+                    <Twitter className="h-6 w-6" />
+                  </Link>
                 </div>
               </div>
-              <div>
-                <h3 className="font-bold text-lg mb-6">Quick Links</h3>
-                <ul className="space-y-4">
-                  {navLinks.map((link) => (
-                    <li key={link.name}>
-                      <Link
-                        href={link.href}
-                        className="text-white/70 hover:text-red-500 transition-colors"
-                        onClick={() => setActiveSection(link.section)}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg mb-6">Services</h3>
-                <ul className="space-y-4">
-                  <li>
-                    <Link href="#" className="text-white/70 hover:text-red-500 transition-colors">
-                      Portrait Photography
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-white/70 hover:text-red-500 transition-colors">
-                      Commercial Photography
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-white/70 hover:text-red-500 transition-colors">
-                      Event Photography
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-white/70 hover:text-red-500 transition-colors">
-                      Product Photography
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-white/70 hover:text-red-500 transition-colors">
-                      Photo Editing
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg mb-6">Newsletter</h3>
-                <p className="text-white/70 mb-6">Subscribe to our newsletter for the latest updates and offers.</p>
-                <form className="flex items-center">
-                  <div className="relative flex-1">
-                    <input
-                      type="email"
-                      placeholder="Your email"
-                      className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-l-full text-white focus:border-red-500 transition-colors outline-none pr-10"
-                    />
-                  </div>
-                  <Button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 rounded-r-full px-4 shadow-[0_4px_14px_0_rgba(239,68,68,0.39)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)] h-[46px]">
-                    <ArrowRight className="h-5 w-5" />
-                  </Button>
-                </form>
-              </div>
             </div>
-            <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
-              <p className="text-white/50 text-sm">© 2025 Avien Mexico. All rights reserved.</p>
-              <div className="flex gap-6 mt-4 md:mt-0">
-                <Link href="#" className="text-white/50 text-sm hover:text-red-500 transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="#" className="text-white/50 text-sm hover:text-red-500 transition-colors">
-                  Terms of Service
-                </Link>
-              </div>
+            <div className="mt-12 pt-8 border-t border-white/10 text-center text-white/70">
+              <p>&copy; {new Date().getFullYear()} thinkLab Studios. All rights reserved.</p>
             </div>
           </div>
         </footer>
